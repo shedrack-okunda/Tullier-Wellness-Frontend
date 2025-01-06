@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import { ForgotPassword } from "./features/auth/components/ForgotPassword";
+import { Login } from "./features/auth/components/Login";
+import { OtpVerification } from "./features/auth/components/OtpVerification";
+import { ResetPassword } from "./features/auth/components/ResetPassword";
+import { Signup } from "./features/auth/components/Signup";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <ForgotPassword />
+      <Login />
+      <OtpVerification />
+      <ResetPassword />
+      <Signup />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

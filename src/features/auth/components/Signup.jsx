@@ -11,6 +11,7 @@ import {
 } from "../AuthSlice";
 import {
   FormHelperText,
+  Paper,
   Stack,
   TextField,
   Typography,
@@ -35,18 +36,18 @@ export const Signup = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const theme = useTheme();
   const is480 = useMediaQuery(theme.breakpoints.down(480));
 
   // handles user redirection
-  useEffect(() => {
-    if (loggedInUser && !loggedInUser?.isVerified) {
-      navigate("/verify-otp");
-    } else if (loggedInUser) {
-      navigate("/");
-    }
-  }, [loggedInUser]);
+  // useEffect(() => {
+  //   if (loggedInUser && !loggedInUser?.isVerified) {
+  //     navigate("/verify-otp");
+  //   } else if (loggedInUser) {
+  //     navigate("/");
+  //   }
+  // }, [loggedInUser]);
 
   // handles signup error
   useEffect(() => {
@@ -83,12 +84,13 @@ export const Signup = () => {
 
   return (
     <Stack
-      width={"90vw"}
-      height={"90vh"}
+      width={"100vw"}
+      height={"100vh"}
+      justifyContent={"center"}
       flexDirection={"row"}
       sx={{ overflowY: "hidden" }}
     >
-      <Stack flex={1} justifyContent={"center"} alignItems={"center"}>
+      <Stack component={Paper} elevation={2} p={3}>
         <Stack
           flexDirection={"row"}
           justifyContent={"center"}
@@ -96,7 +98,7 @@ export const Signup = () => {
         >
           <Stack rowGap={".4rem"}>
             <Typography
-              variant="h2"
+              variant="h3"
               sx={{
                 wordBreak: "break-word",
                 color: theme.palette.secondary.main,
@@ -106,11 +108,18 @@ export const Signup = () => {
               Tullier Wellness
             </Typography>
             <Typography
+              variant="h4"
+              textTransform={"uppercase"}
+              textAlign={"center"}
+            >
+              Register
+            </Typography>
+            <Typography
               alignSelf={"flex-end"}
               color={theme.palette.primary.contrastText}
               variant="body2"
             >
-              Start a Journey to Trauma healing
+              Start a Journey to Wholeness
             </Typography>
           </Stack>
         </Stack>
@@ -168,7 +177,7 @@ export const Signup = () => {
                 placeholder="Enter your password *"
               />
               {errors.password && (
-                <FormHelperText>{errors.password.message}</FormHelperText>
+                <FormHelperText error>{errors.password.message}</FormHelperText>
               )}
             </motion.div>
 
@@ -177,7 +186,7 @@ export const Signup = () => {
                 type="password"
                 fullWidth
                 {...register("confirmPassword", {
-                  required: "Re-enter Password is required",
+                  required: "Confirm password is required",
                   validate: (value, fromValues) =>
                     value === fromValues.password || "Passwords doesn't match",
                 })}
@@ -221,7 +230,7 @@ export const Signup = () => {
                   mr={"1.5rem"}
                   sx={{ textDirection: "none", color: "text.primary" }}
                   to={"/forgot-password"}
-                  component={Link}
+                  // component={Link}
                 >
                   Forgot password
                 </Typography>
@@ -231,7 +240,7 @@ export const Signup = () => {
                 <Typography
                   sx={{ textDecoration: "none", color: "text.primary" }}
                   to={"/login"}
-                  component={Link}
+                  // component={Link}
                 >
                   Already a member?{" "}
                   <span style={{ color: theme.palette.secondary.main }}>

@@ -97,7 +97,7 @@ export const ResetPassword = () => {
         >
           <Stack rowGap={".3rem"} alignItems={"center"}>
             <Typography
-              variant="h4"
+              variant="h5"
               sx={{ color: theme.palette.secondary.main }}
               fontWeight={"600"}
             >
@@ -159,11 +159,11 @@ export const ResetPassword = () => {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
             <LoadingButton
               sx={{
-                height: "3rem",
+                height: "2.5rem",
                 backgroundColor: theme.palette.secondary.main,
                 color: "#fff",
                 fontWeight: 600,
-                fontSize: "1.3rem",
+                fontSize: "1.1rem",
               }}
               fullWidth
               loading={status === "pending"}

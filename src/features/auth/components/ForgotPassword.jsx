@@ -134,7 +134,7 @@ export const ForgotPassword = () => {
                 >
                   <LoadingButton
                     sx={{
-                      height: "3rem",
+                      height: "2.5rem",
                       backgroundColor: theme.palette.secondary.main,
                       color: "#fff",
                       fontWeight: 600,

@@ -87,18 +87,22 @@ export const Signup = () => {
       width={"100vw"}
       height={"100vh"}
       justifyContent={"center"}
-      flexDirection={"row"}
+      alignItems={"center"}
       sx={{ overflowY: "hidden" }}
     >
-      <Stack component={Paper} elevation={2} p={3}>
+      <Paper
+        elevation={2}
+        sx={{ padding: "2rem", maxWidth: "500px", width: "90%" }}
+      >
         <Stack
           flexDirection={"row"}
           justifyContent={"center"}
+          textAlign={"center"}
           alignItems={"center"}
         >
           <Stack rowGap={".4rem"}>
             <Typography
-              variant="h3"
+              variant="h4"
               sx={{
                 wordBreak: "break-word",
                 color: theme.palette.secondary.main,
@@ -107,19 +111,14 @@ export const Signup = () => {
             >
               Tullier Wellness
             </Typography>
-            <Typography
-              variant="h4"
-              textTransform={"uppercase"}
-              textAlign={"center"}
-            >
-              Register
+            <Typography variant="h6" fontWeight={"600"} textAlign={"center"}>
+              Create and account
             </Typography>
             <Typography
-              alignSelf={"flex-end"}
               color={theme.palette.primary.contrastText}
               variant="body2"
             >
-              Start a Journey to Wholeness
+              Welcome to a journey of Wholeness
             </Typography>
           </Stack>
         </Stack>
@@ -203,11 +202,11 @@ export const Signup = () => {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
             <LoadingButton
               sx={{
-                height: "3rem",
+                height: "2.5rem",
                 backgroundColor: theme.palette.secondary.main,
                 color: "#fff",
                 fontWeight: 600,
-                fontSize: "1.3rem",
+                fontSize: "1.2rem",
               }}
               fullWidth
               loading={status === "pending"}
@@ -251,7 +250,7 @@ export const Signup = () => {
             </MotionConfig>
           </Stack>
         </Stack>
-      </Stack>
+      </Paper>
     </Stack>
   );
 };

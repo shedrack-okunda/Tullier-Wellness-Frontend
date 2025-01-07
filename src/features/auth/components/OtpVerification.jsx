@@ -136,91 +136,88 @@ export const OtpVerification = () => {
         >
           Verify Your Email Address
         </Typography>
-
-        {resendOtpStatus === "fulfilled" ? (
-          <Stack
-            width={"100%"}
-            rowGap={"1rem"}
-            component={"form"}
-            noValidate
-            onSubmit={handleSubmit(handleVerifyOtp)}
-          >
-            <Stack rowGap={"1rem"}>
-              <Stack>
-                <Typography sx={{ color: theme.palette.primary.contrastText }}>
-                  Enter the 4 digit OTP sent on
-                </Typography>
-                <Typography fontWeight={"600"}>
-                  {loggedInUser?.email}
-                </Typography>
-              </Stack>
-
-              <Stack>
-                <TextField
-                  {...register("otp", {
-                    required: "OTP is required",
-                    minLength: {
-                      value: 4,
-                      message: "Please enter a 4 digit OTP",
-                    },
-                  })}
-                  fullWidth
-                  type="number"
-                />
-                {errors?.otp && (
-                  <FormHelperText error>{errors.otp.message}</FormHelperText>
-                )}
-              </Stack>
-            </Stack>
-
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
-              <LoadingButton
-                loading={otpVerificationStatus === "pending"}
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{
-                  height: "2.5rem",
-                  backgroundColor: theme.palette.secondary.main,
-                  color: "#fff",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                }}
-              >
-                Verify
-              </LoadingButton>
-            </motion.div>
-          </Stack>
-        ) : (
-          <>
+        <Stack
+          width={"100%"}
+          rowGap={"1rem"}
+          component={"form"}
+          noValidate
+          onSubmit={handleSubmit(handleVerifyOtp)}
+        >
+          <Stack rowGap={"1rem"}>
             <Stack>
-              <Typography sx={{ color: theme.palette.primary.contrastText }}>
-                We will send you an OTP on
+              <Typography
+                variant="body2"
+                sx={{ color: theme.palette.primary.contrastText }}
+              >
+                Enter the 4 digit OTP sent on
               </Typography>
-              <Typography fontWeight={"600"} color={"GrayText"}>
-                {loggedInUser?.email}
-              </Typography>
+              <Typography fontWeight={"600"}>{loggedInUser?.email}</Typography>
             </Stack>
 
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
-              <LoadingButton
-                onClick={handleSendOtp}
-                loading={resendOtpStatus === "pending"}
+            <Stack>
+              <TextField
+                {...register("otp", {
+                  required: "OTP is required",
+                  minLength: {
+                    value: 4,
+                    message: "Please enter a 4 digit OTP",
+                  },
+                })}
                 fullWidth
-                variant="contained"
-                sx={{
-                  height: "2.5rem",
-                  backgroundColor: theme.palette.secondary.main,
-                  color: "#fff",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                }}
-              >
-                Get OTP
-              </LoadingButton>
-            </motion.div>
-          </>
-        )}
+                type="number"
+              />
+              {errors?.otp && (
+                <FormHelperText error>{errors.otp.message}</FormHelperText>
+              )}
+            </Stack>
+          </Stack>
+
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
+            <LoadingButton
+              loading={otpVerificationStatus === "pending"}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                height: "2.5rem",
+                backgroundColor: theme.palette.secondary.main,
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "1rem",
+              }}
+            >
+              Verify
+            </LoadingButton>
+          </motion.div>
+        </Stack>
+        <>
+          <Stack>
+            <Typography sx={{ color: theme.palette.primary.contrastText }}>
+              We will send you an OTP on
+            </Typography>
+            <Typography fontWeight={"600"} color={"GrayText"}>
+              {loggedInUser?.email}
+            </Typography>
+          </Stack>
+
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 1 }}>
+            <LoadingButton
+              onClick={handleSendOtp}
+              loading={resendOtpStatus === "pending"}
+              fullWidth
+              variant="contained"
+              sx={{
+                height: "2.5rem",
+                backgroundColor: theme.palette.secondary.main,
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "1rem",
+              }}
+            >
+              Get OTP
+            </LoadingButton>
+          </motion.div>
+        </>
       </Stack>
     </Stack>
   );

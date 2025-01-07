@@ -13,6 +13,7 @@ export const NotFoundPage = () => {
             variant="h4"
             fontWeight={"600"}
             sx={{ color: theme.palette.secondary.main }}
+            mb={2}
           >
             404 Not Found
           </Typography>
@@ -27,7 +28,7 @@ export const NotFoundPage = () => {
         <motion.div whileHover={{ y: -2 }}>
           <Button
             sx={{
-              height: "3rem",
+              height: "2.5rem",
               backgroundColor: theme.palette.secondary.main,
               color: "#fff",
               fontWeight: 600,

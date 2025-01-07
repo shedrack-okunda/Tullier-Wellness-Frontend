@@ -77,19 +77,23 @@ export const Login = () => {
     <Stack
       width={"100vw"}
       height={"100vh"}
-      flexDirection={"row"}
       justifyContent={"center"}
+      alignItems={"center"}
       sx={{ overflowY: "hidden" }}
     >
-      <Stack component={Paper} elevation={2} p={3}>
+      <Paper
+        elevation={2}
+        sx={{ padding: "2rem", maxWidth: "500px", width: "90%" }}
+      >
         <Stack
           flexDirection={"row"}
           justifyContent={"center"}
+          textAlign={"center"}
           alignItems={"center"}
         >
           <Stack rowGap={".4rem"}>
             <Typography
-              variant="h3"
+              variant="h4"
               sx={{
                 wordBreak: "break-word",
                 color: theme.palette.secondary.main,
@@ -98,19 +102,15 @@ export const Login = () => {
             >
               Tullier Wellness
             </Typography>
-            <Typography
-              variant="h4"
-              textTransform={"uppercase"}
-              textAlign={"center"}
-            >
-              Login
+            <Typography variant="h6" fontWeight={"600"} textAlign={"center"}>
+              Login to your account
             </Typography>
             <Typography
               alignSelf={"flex-end"}
               color={theme.palette.primary.contrastText}
               variant="body2"
             >
-              Start a Journey to Wholeness
+              Welcome to a Journey of Wholeness
             </Typography>
           </Stack>
         </Stack>
@@ -161,11 +161,11 @@ export const Login = () => {
             <LoadingButton
               fullWidth
               sx={{
-                height: "3rem",
+                height: "2.5rem",
                 backgroundColor: theme.palette.secondary.main,
                 color: "#fff",
                 fontWeight: 600,
-                fontSize: "1.3rem",
+                fontSize: "1.2rem",
               }}
               loading={status === "pending"}
               type="submit"
@@ -208,7 +208,7 @@ export const Login = () => {
             </MotionConfig>
           </Stack>
         </Stack>
-      </Stack>
+      </Paper>
     </Stack>
   );
 };

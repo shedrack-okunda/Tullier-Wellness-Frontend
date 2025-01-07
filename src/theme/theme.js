@@ -1,33 +1,53 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#fef9f5',
-            light: '#ffffff',
-            dark: '#f3ece6',
-            contrastText: '#05010d'
-        },
-
-        secondary: {
-            main: '#c77f5d'
-        },
+  palette: {
+    primary: {
+      main: "#fef9f5",
+      light: "#ffffff",
+      dark: "#f3ece6",
+      contrastText: "#05010d",
     },
 
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 600,
-            md: 900,
-            lg: 1200,
-            xl: 1536
-        },
+    secondary: {
+      main: "#c77f5d",
+      light: "#ddb69a",
+      dark: "#8e533d",
+      constrastText: "#fff",
     },
 
-    typography: {
-    fontFamily:"Poppins, sans-serif",
+    text: {
+      primary: "#05010d",
+      secondary: "#3b3b30",
+    },
 
-    h1: {  // -1rem rule
+    button: {
+      background: "#f1d8cc",
+      hoverBackground: "#f7e5dc",
+      text: "#c87f5d",
+    },
+
+    background: {
+      program: "#f3e6d6",
+      event: "#f0e2de",
+    },
+  },
+
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+
+  typography: {
+    fontFamily: "Montserrat, sans-serif",
+
+    h1: {
+      // -1rem rule
       fontSize: "6rem",
 
       "@media (max-width:960px)": {
@@ -41,7 +61,8 @@ export const theme = createTheme({
       },
     },
 
-    h2: {  // -7 formula
+    h2: {
+      // -7 formula
       fontSize: "3.75rem",
       "@media (max-width:960px)": {
         fontSize: "3rem",
@@ -55,23 +76,23 @@ export const theme = createTheme({
       },
     },
 
-    h3: {  // -6 formula
+    h3: {
+      // -6 formula
       fontSize: "3rem",
       "@media (max-width:960px)": {
         fontSize: "2.4rem",
       },
-      
+
       "@media (max-width:662px)": {
         fontSize: "2rem",
       },
       "@media (max-width:414px)": {
         fontSize: "1.7rem",
       },
-
     },
 
     h4: {
-       fontSize: "2.125rem",
+      fontSize: "2.125rem",
       "@media (max-width:960px)": {
         fontSize: "1.5rem",
       },
@@ -109,7 +130,7 @@ export const theme = createTheme({
         fontSize: ".9rem",
       },
     },
-    
+
     body2: {
       fontSize: "1rem",
       "@media (max-width:960px)": {
@@ -123,6 +144,6 @@ export const theme = createTheme({
       },
     },
   },
-})
+});
 
-export default theme
+export default theme;

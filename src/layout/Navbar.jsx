@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
 export const Navbar = () => {

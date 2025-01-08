@@ -30,7 +30,7 @@ export const Login = () => {
   const status = useSelector(SelectLoginStatus);
   const error = useSelector(SelectLoginError);
   const loggedInUser = useSelector(SelectLoggedInUser);
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -40,13 +40,13 @@ export const Login = () => {
   const is480 = useMediaQuery(theme.breakpoints.down(480));
 
   //   handles user redirection
-  //   useEffect(() => {
-  //     if (loggedInUser && loggedInUser?.isVerified) {
-  //       navigate("/");
-  //     } else if (loggedInUser && !loggedInUser?.isVerified) {
-  //       navigate("/verify-otp");
-  //     }
-  //   }, [loggedInUser]);
+  useEffect(() => {
+    if (loggedInUser && loggedInUser?.isVerified) {
+      navigate("/");
+    } else if (loggedInUser && !loggedInUser?.isVerified) {
+      navigate("/verify-otp");
+    }
+  }, [loggedInUser]);
 
   // handles login error and toast them
   useEffect(() => {
@@ -79,11 +79,11 @@ export const Login = () => {
       height={"100vh"}
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{ overflowY: "hidden" }}
+      sx={{ overflow: "hidden" }}
     >
       <Paper
         elevation={2}
-        sx={{ padding: "2rem", maxWidth: "500px", width: "90%" }}
+        sx={{ padding: "2rem", maxWidth: "500px", width: "70%" }}
       >
         <Stack
           flexDirection={"row"}
@@ -134,7 +134,7 @@ export const Login = () => {
                   message: "Enter a valid email",
                 },
               })}
-              placeholder="Enter your email *"
+              placeholder="Email *"
             />
             {errors.email && (
               <FormHelperText sx={{ mt: 1 }} error>
@@ -148,7 +148,7 @@ export const Login = () => {
               type="password"
               fullWidth
               {...register("password", { required: "Password is required" })}
-              placeholder="Enter your password *"
+              placeholder="Password *"
             />
             {errors.password && (
               <FormHelperText sx={{ mt: 1 }} error>
@@ -187,7 +187,7 @@ export const Login = () => {
                   mr={"1.5rem"}
                   sx={{ textDecoration: "none", color: "text.primary" }}
                   to={"/forgot-password"}
-                  //   component={Link}
+                  component={Link}
                 >
                   Forgot password
                 </Typography>
@@ -197,7 +197,7 @@ export const Login = () => {
                 <Typography
                   sx={{ textDecoration: "none", color: "text.primary" }}
                   to={"/signup"}
-                  //   component={Link}
+                  component={Link}
                 >
                   Don't have an account?{" "}
                   <span style={{ color: theme.palette.secondary.main }}>

@@ -134,7 +134,7 @@ export const ForgotPassword = () => {
                 >
                   <LoadingButton
                     sx={{
-                      height: "2.5rem",
+                      height: "3rem",
                       backgroundColor: theme.palette.secondary.main,
                       color: "#fff",
                       fontWeight: 600,
@@ -164,7 +164,7 @@ export const ForgotPassword = () => {
             mt={2}
             to={"/login"}
             variant="body2"
-            // component={Link}
+            component={Link}
           >
             Go back to{" "}
             <span style={{ color: theme.palette.secondary.main }}>login</span>

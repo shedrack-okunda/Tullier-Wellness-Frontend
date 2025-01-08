@@ -36,18 +36,18 @@ export const Signup = () => {
     reset,
     formState: { errors },
   } = useForm();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const theme = useTheme();
   const is480 = useMediaQuery(theme.breakpoints.down(480));
 
   // handles user redirection
-  // useEffect(() => {
-  //   if (loggedInUser && !loggedInUser?.isVerified) {
-  //     navigate("/verify-otp");
-  //   } else if (loggedInUser) {
-  //     navigate("/");
-  //   }
-  // }, [loggedInUser]);
+  useEffect(() => {
+    if (loggedInUser && !loggedInUser?.isVerified) {
+      navigate("/verify-otp");
+    } else if (loggedInUser) {
+      navigate("/");
+    }
+  }, [loggedInUser]);
 
   // handles signup error
   useEffect(() => {
@@ -88,11 +88,11 @@ export const Signup = () => {
       height={"100vh"}
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{ overflowY: "hidden" }}
+      sx={{ overflow: "hidden" }}
     >
       <Paper
         elevation={2}
-        sx={{ padding: "2rem", maxWidth: "500px", width: "90%" }}
+        sx={{ padding: "2rem", maxWidth: "500px", width: "70%" }}
       >
         <Stack
           flexDirection={"row"}
@@ -189,7 +189,7 @@ export const Signup = () => {
                   validate: (value, fromValues) =>
                     value === fromValues.password || "Passwords doesn't match",
                 })}
-                placeholder="Re-enter Password"
+                placeholder="Confirm Password *"
               />
               {errors.confirmPassword && (
                 <FormHelperText error>
@@ -229,7 +229,7 @@ export const Signup = () => {
                   mr={"1.5rem"}
                   sx={{ textDirection: "none", color: "text.primary" }}
                   to={"/forgot-password"}
-                  // component={Link}
+                  component={Link}
                 >
                   Forgot password
                 </Typography>
@@ -239,7 +239,7 @@ export const Signup = () => {
                 <Typography
                   sx={{ textDecoration: "none", color: "text.primary" }}
                   to={"/login"}
-                  // component={Link}
+                  component={Link}
                 >
                   Already a member?{" "}
                   <span style={{ color: theme.palette.secondary.main }}>

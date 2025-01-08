@@ -37,7 +37,7 @@ export const ResetPassword = () => {
   const error = useSelector(SelectResetPasswordError);
   const successMessage = useSelector(SelectResetPasswordSuccessMessage);
   const { userId, passwordResetToken } = useParams();
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const theme = useTheme();
   const is500 = useMediaQuery(theme.breakpoints.down(500));
 
@@ -51,16 +51,16 @@ export const ResetPassword = () => {
     };
   }, [error]);
 
-  //   useEffect(() => {
-  //     if (status === "fulfilled") {
-  //       toast.success(successMessage?.message);
-  //       navigate("/login");
-  //     }
+  useEffect(() => {
+    if (status === "fulfilled") {
+      toast.success(successMessage?.message);
+      navigate("/login");
+    }
 
-  //     return () => {
-  //       dispatch(clearResetPasswordSuccessMessage());
-  //     };
-  //   }, [status]);
+    return () => {
+      dispatch(clearResetPasswordSuccessMessage());
+    };
+  }, [status]);
 
   useEffect(() => {
     return () => {
@@ -82,11 +82,7 @@ export const ResetPassword = () => {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Stack
-        component={Paper}
-        elevation={2}
-        sx={{ backgroundColor: theme.palette.primary.light }}
-      >
+      <Stack component={Paper} elevation={2}>
         <Stack
           component={"form"}
           width={is500 ? "95vw" : "30rem"}
@@ -97,7 +93,7 @@ export const ResetPassword = () => {
         >
           <Stack rowGap={".3rem"} alignItems={"center"}>
             <Typography
-              variant="h5"
+              variant="h4"
               sx={{ color: theme.palette.secondary.main }}
               fontWeight={"600"}
             >
@@ -163,7 +159,7 @@ export const ResetPassword = () => {
                 backgroundColor: theme.palette.secondary.main,
                 color: "#fff",
                 fontWeight: 600,
-                fontSize: "1.1rem",
+                fontSize: "1.2rem",
               }}
               fullWidth
               loading={status === "pending"}

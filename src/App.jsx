@@ -21,6 +21,16 @@ import {
 } from "./pages";
 import { Logout } from "./features/auth/components/Logout";
 import { useAuthCheck } from "./hooks/useAuth/useAuthCheck";
+import { Layout } from "./layout/Layout";
+import { Home } from "./features/components/Home";
+import { AboutUs } from "./features/components/About";
+import { Events } from "./features/components/Events";
+import { Resources } from "./features/components/Resources";
+import { Programs } from "./features/components/Programs";
+import { Services } from "./features/components/Services";
+import { ContactForm } from "./features/components/ContactForm";
+import { NewsLetter } from "./features/components/NewsLetter";
+import { Testimonials } from "./features/components/Testimonials";
 
 export default function App() {
   const isAuthChecked = useSelector(SelectIsAuthChecked);
@@ -62,6 +72,23 @@ export default function App() {
           </>
         ) : (
           <>
+            <Route
+              element={
+                <Protected>
+                  <Layout />
+                </Protected>
+              }
+            >
+              <Route index element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<ContactForm />} />
+              <Route path="/letter" element={<NewsLetter />} />
+              <Route path="/testimonies" element={<Testimonials />} />
+            </Route>
             <Route
               path="/"
               element={

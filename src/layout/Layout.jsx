@@ -9,7 +9,9 @@ export const Layout = () => {
       <Box component="main">
         <Navbar />
 
-        <Outlet />
+        <Box sx={{ mt: "50px", mb: "25px" }}>
+          <Outlet />
+        </Box>
 
         <Footer />
       </Box>

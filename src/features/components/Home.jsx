@@ -2,6 +2,14 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 import home from "../../assets/images/home.jpg";
 import { motion } from "framer-motion";
 import KeyboardDoubleArrowDownTwoTone from "@mui/icons-material/KeyboardDoubleArrowDownTwoTone";
+import { Link } from "react-router-dom";
+import { AboutUs } from "./About";
+import { Testimonials } from "./Testimonials";
+import { Events } from "./Events";
+import { Services } from "./Services";
+import { Resources } from "./Resources";
+import { Programs } from "./Programs";
+import { ContactForm } from "./ContactForm";
 
 export const Home = () => {
   const theme = useTheme();
@@ -22,7 +30,7 @@ export const Home = () => {
       <Typography
         variant="h2"
         sx={{
-          fontSize: { xs: "1.5rem", sm: "1.5rem" },
+          fontSize: { xs: "1.3rem", sm: "1.3rem" },
           fontWeight: 600,
           fontStyle: "italic",
           textAlign: "center",
@@ -37,7 +45,7 @@ export const Home = () => {
         variant="h1"
         sx={{
           fontFamily: theme.typography.fontFamily,
-          fontSize: { xs: "2.5rem", sm: "2.8rem" },
+          fontSize: { xs: "2rem", sm: "2.3rem" },
           textAlign: "center",
           color: theme.palette.secondary.main,
           fontWeight: 700,
@@ -50,12 +58,11 @@ export const Home = () => {
       <Typography
         variant="body2"
         sx={{
-          fontSize: { xs: "1.3rem", sm: "1.4rem" },
+          fontSize: { xs: "1.2rem", sm: "1.2rem" },
           fontWeight: 500,
           color: theme.palette.text.primary,
           lineHeight: "1.8",
-          // textAlign: "center",
-          marginBottom: "2rem",
+          marginBottom: "1rem",
           maxWidth: "700px",
         }}
       >
@@ -77,30 +84,46 @@ export const Home = () => {
           maxWidth: "500px",
           borderRadius: "15px",
           boxShadow: `0px 4px 20px ${theme.palette.secondary.light}`,
-          marginBottom: "2rem",
+          marginBottom: "1rem",
         }}
       />
 
       <motion.div whileHover={{ scale: 1.102 }} whileTap={{ scale: 1 }}>
         <Button
           variant="contained"
+          to={"/about"}
+          component={Link}
           sx={{
             backgroundColor: theme.palette.button.background,
             color: theme.palette.button.text,
             padding: "10px 20px",
-            fontSize: "1.3rem",
+            fontSize: "1rem",
             fontWeight: 600,
-            // width: { xs: "100%", sm: "50%" },
             textTransform: "uppercase",
+            mb: "10px",
             ":hover": {
               backgroundColor: theme.palette.button.hoverBackground,
             },
           }}
         >
-          See More{" "}
-          <KeyboardDoubleArrowDownTwoTone sx={{ fontSize: "2.2rem" }} />
+          See More
+          <KeyboardDoubleArrowDownTwoTone sx={{ fontSize: "2rem" }} />
         </Button>
       </motion.div>
+
+      <AboutUs />
+
+      <Testimonials />
+
+      <Events />
+
+      <Services />
+
+      <Resources />
+
+      <Programs />
+
+      <ContactForm />
     </Box>
   );
 };

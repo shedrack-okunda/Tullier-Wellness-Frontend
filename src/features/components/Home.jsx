@@ -1,8 +1,6 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import home from "../../assets/images/home.jpg";
 import { motion } from "framer-motion";
-import KeyboardDoubleArrowDownTwoTone from "@mui/icons-material/KeyboardDoubleArrowDownTwoTone";
-import { Link } from "react-router-dom";
 import { AboutUs } from "./About";
 import { Testimonials } from "./Testimonials";
 import { Events } from "./Events";
@@ -10,9 +8,40 @@ import { Services } from "./Services";
 import { Resources } from "./Resources";
 import { Programs } from "./Programs";
 import { ContactForm } from "./ContactForm";
+import { useInView } from "react-intersection-observer";
 
 export const Home = () => {
   const theme = useTheme();
+
+  // Create separate hooks for each section
+  const [aboutRef, aboutInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [testimonialsRef, testimonialsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [eventsRef, eventsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [servicesRef, servicesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [resourcesRef, resourcesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [programsRef, programsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [contactsRef, contactsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <>
@@ -29,33 +58,45 @@ export const Home = () => {
           justifyContent: "center",
         }}
       >
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: "1.3rem", sm: "1.3rem" },
-            fontWeight: 600,
-            fontStyle: "italic",
-            textAlign: "center",
-            marginBottom: "1rem",
-            color: theme.palette.text.secondary,
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2 }}
         >
-          Welcome
-        </Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xs: "1.3rem", sm: "1.3rem" },
+              fontWeight: 600,
+              fontStyle: "italic",
+              textAlign: "center",
+              marginBottom: "1rem",
+              color: theme.palette.text.secondary,
+            }}
+          >
+            Welcome
+          </Typography>
+        </motion.div>
 
-        <Typography
-          variant="h1"
-          sx={{
-            fontFamily: theme.typography.fontFamily,
-            fontSize: { xs: "2rem", sm: "2.3rem" },
-            textAlign: "center",
-            color: theme.palette.secondary.main,
-            fontWeight: 700,
-            marginBottom: "1rem",
-          }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 2 }}
         >
-          Tullier Wellness
-        </Typography>
+          <Typography
+            variant="h1"
+            sx={{
+              fontFamily: theme.typography.fontFamily,
+              fontSize: { xs: "2rem", sm: "2.3rem" },
+              textAlign: "center",
+              color: theme.palette.secondary.main,
+              fontWeight: 700,
+              marginBottom: "1rem",
+            }}
+          >
+            Tullier Wellness
+          </Typography>
+        </motion.div>
 
         <Typography
           variant="body2"
@@ -74,7 +115,7 @@ export const Home = () => {
           programs. We nurture the growth of individuals aged 21 to 35, with a
           particular focus on youth and women. Empowering them with essential
           life skills, we guide them through the journey of healing,
-          self-discovery, and resilient living
+          self-discovery, and resilient living.
         </Typography>
 
         <Box
@@ -89,57 +130,77 @@ export const Home = () => {
             marginBottom: "1rem",
           }}
         />
+      </Box>
 
-        <motion.div whileHover={{ scale: 1.102 }} whileTap={{ scale: 1 }}>
-          <Button
-            variant="contained"
-            to={"/about"}
-            component={Link}
-            sx={{
-              backgroundColor: theme.palette.button.background,
-              color: theme.palette.button.text,
-              padding: "10px 20px",
-              fontSize: "1rem",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              mb: "10px",
-              ":hover": {
-                backgroundColor: theme.palette.button.hoverBackground,
-              },
-            }}
-          >
-            See More
-            <KeyboardDoubleArrowDownTwoTone sx={{ fontSize: "2rem" }} />
-          </Button>
+      {/* Other Sections with Separate Observers */}
+      <Box id="about" ref={aboutRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={aboutInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <AboutUs />
         </motion.div>
       </Box>
 
-      <Box id="about">
-        <AboutUs />
+      <Box id="testimonials" ref={testimonialsRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={testimonialsInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <Testimonials />
+        </motion.div>
       </Box>
 
-      <Box id="testimonies">
-        <Testimonials />
+      <Box id="events" ref={eventsRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={eventsInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <Events />
+        </motion.div>
       </Box>
 
-      <Box id="events">
-        <Events />
+      <Box id="services" ref={servicesRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={servicesInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <Services />
+        </motion.div>
       </Box>
 
-      <Box id="services">
-        <Services />
+      <Box id="resources" ref={resourcesRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={resourcesInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <Resources />
+        </motion.div>
       </Box>
 
-      <Box id="resources">
-        <Resources />
+      <Box id="programs" ref={programsRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={programsInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <Programs />
+        </motion.div>
       </Box>
 
-      <Box id="programs">
-        <Programs />
-      </Box>
-
-      <Box id="contacts">
-        <ContactForm />
+      <Box id="contacts" ref={contactsRef}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={contactsInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1.5 }}
+        >
+          <ContactForm />
+        </motion.div>
       </Box>
     </>
   );

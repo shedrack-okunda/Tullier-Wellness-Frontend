@@ -31,6 +31,7 @@ import { Services } from "./features/components/Services";
 import { ContactForm } from "./features/components/ContactForm";
 import { NewsLetter } from "./features/components/NewsLetter";
 import { Testimonials } from "./features/components/Testimonials";
+import { Profile } from "./features/components/User";
 
 export default function App() {
   const isAuthChecked = useSelector(SelectIsAuthChecked);
@@ -80,6 +81,7 @@ export default function App() {
               }
             >
               <Route index element={<Home />} />
+              <Route path="profile" element={<Profile />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/events" element={<Events />} />
               <Route path="/resources" element={<Resources />} />

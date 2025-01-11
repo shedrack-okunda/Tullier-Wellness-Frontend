@@ -11,11 +11,36 @@ import {
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/Tullier Main LOGO (1).png";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { SelectLoggedInUser } from "../features/auth/AuthSlice";
+import { axio } from "../config/axios";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(700));
+  const [userName, setUserName] = useState("");
+  const loggedInUser = useSelector(SelectLoggedInUser);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const userId = loggedInUser?._id;
+        if (!userId) {
+          console.warn("User id is undefined");
+          return;
+        }
+        const res = await axio.get(`/users/${userId}`);
+        setUserName(res.data.name);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchUserName();
+  }, [loggedInUser]);
 
   const handleScroll = (id) => {
     const element = document.getElementById(id);
@@ -92,9 +117,18 @@ export const Navbar = () => {
           </Box>
         )}
 
+        {/* <IconButton
+          sx={{ backgroundColor: theme.palette.button.background }}
+          onClick={() => navigate("/profile")}
+        >
+          <AccountCircleIcon />
+        </IconButton> */}
+
         {/* Logout Icon */}
         <IconButton
-          sx={{ color: theme.palette.secondary.main }}
+          sx={{
+            color: theme.palette.secondary.main,
+          }}
           onClick={() => navigate("/logout")}
         >
           <ExitToAppIcon />

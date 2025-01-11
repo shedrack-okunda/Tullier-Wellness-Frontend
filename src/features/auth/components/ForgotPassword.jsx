@@ -69,12 +69,7 @@ export const ForgotPassword = () => {
   };
 
   return (
-    <Stack
-      width={"100vw"}
-      height={"100vh"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
+    <Stack height={"100vh"} justifyContent={"center"} alignItems={"center"}>
       <Stack rowGap={"1rem"}>
         <Stack component={Paper} elevation={2}>
           <Stack

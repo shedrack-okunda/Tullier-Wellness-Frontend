@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -20,23 +19,26 @@ import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 export const Footer = () => {
   const [value, setValue] = useState(0);
   const [hoverLabel, setHoverLabel] = useState(""); // State to track hovered label
-  const navigate = useNavigate();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(700)); // Define screen size breakpoint
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const handleNavigation = (id) => {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const navItems = [
-    { label: "Home", icon: <HomeIcon />, path: "/" },
-    { label: "About", icon: <InfoIcon />, path: "/about" },
-    { label: "Testimonials", icon: <ChatIcon />, path: "/testimonies" },
-    { label: "Events", icon: <EventIcon />, path: "/events" },
-    { label: "Services", icon: <SettingsSuggestIcon />, path: "/services" },
-    { label: "Books", icon: <BookIcon />, path: "/resources" },
-    { label: "Programs", icon: <ListIcon />, path: "/programs" },
-    { label: "Contact", icon: <ContactMailIcon />, path: "/contact" },
+    { label: "Home", icon: <HomeIcon />, id: "home" },
+    { label: "About", icon: <InfoIcon />, id: "about" },
+    { label: "Testimonials", icon: <ChatIcon />, id: "testimonies" },
+    { label: "Events", icon: <EventIcon />, id: "events" },
+    { label: "Services", icon: <SettingsSuggestIcon />, id: "services" },
+    { label: "Books", icon: <BookIcon />, id: "resources" },
+    { label: "Programs", icon: <ListIcon />, id: "programs" },
+    { label: "Contact", icon: <ContactMailIcon />, id: "contacts" },
   ];
 
   return (
@@ -67,7 +69,7 @@ export const Footer = () => {
               title={item.label} // For accessibility
               onMouseEnter={() => setHoverLabel(item.label)} // Set hover label
               onMouseLeave={() => setHoverLabel("")} // Clear hover label
-              onClick={() => handleNavigation(item.path)}
+              onClick={() => handleNavigation(item.id)}
               sx={{
                 minWidth: "auto", // Reduce button width
                 color: theme.palette.secondary.main,

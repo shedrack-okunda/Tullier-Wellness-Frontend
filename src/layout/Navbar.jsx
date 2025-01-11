@@ -4,9 +4,11 @@ import {
   Typography,
   Button,
   Box,
+  IconButton,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/Tullier Main LOGO (1).png";
 
@@ -15,15 +17,22 @@ export const Navbar = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(700));
 
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Testimonials", path: "/testimonies" },
-    { label: "Events", path: "/events" },
-    { label: "Services", path: "/services" },
-    { label: "Resources", path: "/resources" },
-    { label: "Programs", path: "/programs" },
-    { label: "Contact", path: "/contact" },
+    { label: "Home", id: "home" },
+    { label: "About", id: "about" },
+    { label: "Testimonials", id: "testimonies" },
+    { label: "Events", id: "events" },
+    { label: "Services", id: "services" },
+    { label: "Resources", id: "resources" },
+    { label: "Programs", id: "programs" },
+    { label: "Contact", id: "contacts" },
   ];
 
   return (
@@ -42,6 +51,7 @@ export const Navbar = () => {
           justifyContent: "space-between",
         }}
       >
+        {/* Logo and Title */}
         <Box
           component="img"
           src={logo}
@@ -63,6 +73,7 @@ export const Navbar = () => {
           Tullier Wellness
         </Typography>
 
+        {/* Navigation Items */}
         {!isSmallScreen && (
           <Box>
             {navItems.map((item, index) => (
@@ -73,13 +84,21 @@ export const Navbar = () => {
                   fontWeight: 600,
                   fontSize: "1rem",
                 }}
-                onClick={() => navigate(item.path)}
+                onClick={() => handleScroll(item.id)}
               >
                 {item.label}
               </Button>
             ))}
           </Box>
         )}
+
+        {/* Logout Icon */}
+        <IconButton
+          sx={{ color: theme.palette.secondary.main }}
+          onClick={() => navigate("/logout")}
+        >
+          <ExitToAppIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

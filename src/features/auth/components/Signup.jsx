@@ -84,16 +84,12 @@ export const Signup = () => {
 
   return (
     <Stack
-      width={"100vw"}
       height={"100vh"}
       justifyContent={"center"}
       alignItems={"center"}
       sx={{ overflow: "hidden" }}
     >
-      <Paper
-        elevation={2}
-        sx={{ padding: "2rem", maxWidth: "500px", width: "70%" }}
-      >
+      <Paper elevation={2} sx={{ padding: "2rem", maxWidth: "500px" }}>
         <Stack
           flexDirection={"row"}
           justifyContent={"center"}
